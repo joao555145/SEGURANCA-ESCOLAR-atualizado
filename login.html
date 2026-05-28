@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — Área Restrita</title>
+  <link rel="shortcut icon" href="sergio.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+  <div class="login-bg" aria-hidden="true"></div>
+
+  <main class="login-shell">
+    <section class="login-card" aria-label="Login de acesso restrito">
+      <header class="login-head">
+        <img class="login-logo" src="sergio.png" alt="Segurança Escolar">
+        <div class="login-head-text">
+          <h1>Área Restrita</h1>
+          <p class="login-sub">Controle de Acesso • Autenticação segura</p>
+        </div>
+      </header>
+
+      <form id="loginForm" class="login-form" autocomplete="off">
+        <div class="field">
+          <label for="email">E-mail</label>
+          <div class="input-wrap">
+            <input id="email" type="email" autocomplete="username" required>
+            <span class="input-icon" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="pwd">Senha</label>
+          <div class="input-wrap">
+            <input id="pwd" type="password" autocomplete="current-password" required>
+            <span class="input-icon pwd" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <button class="login-btn" type="submit">
+          <span class="btn-glow" aria-hidden="true"></span>
+          <span class="btn-text">Entrar</span>
+        </button>
+
+        <div class="login-msg" id="msg" role="alert">Usuário ou senha inválidos</div>
+
+        <p class="login-help">Se tiver problemas, contate o administrador.</p>
+      </form>
+
+      <footer class="login-foot">
+        <a class="login-link" href="register.html">Criar / Atualizar usuário (teste)</a>
+        <span class="login-divider" aria-hidden="true">•</span>
+        <span class="login-foot-small">Somente para ambiente de demonstração.</span>
+      </footer>
+    </section>
+  </main>
+
+  <script src="login.js"></script>
+</body>
+</html>
