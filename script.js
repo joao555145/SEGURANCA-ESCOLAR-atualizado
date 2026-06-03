@@ -115,9 +115,22 @@ overlay.addEventListener(
 
 function abrirPainel(){
 
+  setTimeout(() => {
+
+    document.getElementById("home").style.display = "none";
+
+    document.querySelector(".painel").style.display = "block";
+
+  }, 3000);
+
+}
+
+setTimeout(() => {
+
   document.getElementById("home").style.display =
     "none";
 
   document.querySelector(".painel").style.display =
     "block";
-}
+
+}, 3000);
