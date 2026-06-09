@@ -109,11 +109,8 @@
 
     z-index:99999;
 
-    .menu-btn{
-    width:100px !important;
-    height:100px !important;
-    background:red !important;
-}
+    width:50px;
+    height:50px;
 
     display:flex;
 
