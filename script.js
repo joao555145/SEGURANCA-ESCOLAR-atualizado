@@ -79,37 +79,47 @@ themeToggle.addEventListener(
 
 /* MENU */
 
-menuBtn.addEventListener(
-  "click",
-  () => {
+if(menuBtn){
 
-    sidebar.classList.toggle(
-      "abrir"
-    );
+  menuBtn.addEventListener(
+    "click",
+    () => {
 
-    overlay.classList.toggle(
-      "ativo"
-    );
+      sidebar.classList.toggle(
+        "abrir"
+      );
 
-  }
-);
+      if(overlay){
+        overlay.classList.toggle(
+          "ativo"
+        );
+      }
+
+    }
+  );
+
+}
 
 /* FECHAR MENU */
 
-overlay.addEventListener(
-  "click",
-  () => {
+if(overlay){
 
-    sidebar.classList.remove(
-      "abrir"
-    );
+  overlay.addEventListener(
+    "click",
+    () => {
 
-    overlay.classList.remove(
-      "ativo"
-    );
+      sidebar.classList.remove(
+        "abrir"
+      );
 
-  }
-);
+      overlay.classList.remove(
+        "ativo"
+      );
+
+    }
+  );
+
+}
 
 /* ABRIR PAINEL */
 
