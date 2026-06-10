@@ -1,3 +1,5 @@
+//script.js
+
 const botoes =
   document.querySelectorAll(".botao");
 

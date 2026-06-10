@@ -1,4 +1,4 @@
-// login.js
+// login js
 
 let USERS = [
   {

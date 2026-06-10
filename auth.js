@@ -1,3 +1,5 @@
+//auth.js
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const authed =
