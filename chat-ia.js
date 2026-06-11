@@ -49,7 +49,7 @@ async function enviarPerguntaIA() {
             "application/json",
 
           "Authorization":
-            "Bearer "
+            "Bearer "   //coloque a chave API aqui
 
         },
 

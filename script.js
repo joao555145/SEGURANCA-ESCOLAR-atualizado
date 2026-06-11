@@ -31,15 +31,11 @@ botoes.forEach((botao) => {
 
     // REMOVE CLASSES
     botoes.forEach((b) => {
-
       b.classList.remove("ativo");
-
     });
 
     secoes.forEach((s) => {
-
       s.classList.remove("ativa");
-
     });
 
     // ATIVA BOTÃO
@@ -71,7 +67,6 @@ botoes.forEach((botao) => {
 themeToggle.addEventListener(
   "click",
   () => {
-
     document.body.classList.toggle(
       "dark"
     );
@@ -82,15 +77,12 @@ themeToggle.addEventListener(
 /* MENU */
 
 if(menuBtn){
-
   menuBtn.addEventListener(
     "click",
     () => {
-
       sidebar.classList.toggle(
         "abrir"
       );
-
       if(overlay){
         overlay.classList.toggle(
           "ativo"

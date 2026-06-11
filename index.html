@@ -1,36 +1,26 @@
+ <!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Segurança da Escola</title>
-
-  <link rel="icon" type="image/png" href="sergio1.png">
+  <link rel="icon" type="image/png" href="IMAGENS/sergio1.png">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <section id="home">
-
   <div class="loading-screen">
-
-    <img src="sergio1.png" class="loading-logo">
-
+    <img src="IMAGENS/sergio1.png" class="loading-logo">
     <h1>Segurança Escolar</h1>
-
     <p>Inicializando sistema...</p>
-
     <div class="loading-bar">
       <div class="loading-progress"></div>
     </div>
-
   </div>
-
 </section>
 
  
@@ -44,12 +34,10 @@
     <h1 class="logo">
       SEGURANÇA ESCOLAR E MONITORAMENTO
     </h1>
-
   </header>
 
   <!-- SIDEBAR -->
   <aside id="sidebar" class="sidebar">
-
     <h2>MENU</h2>
 
     <!-- NOVA TELA INICIAL -->
@@ -86,128 +74,93 @@
     <button id="logoutBtn" class="logoutBtn">
       Sair
     </button>
-
   </aside>
-
   <div class="painel">
-
     <main class="conteudo">
 
       <!-- TELA INICIAL -->
       <section class="secao ativa" id="inicio">
-
         <div class="home-box">
-
           <h2>
             Bem-vindo ao sistema de monitoramento
           </h2>
-
           <p>
-            
           </p>
-
           <div class="cards-home">
-
             <div class="card-home">
+              
               <h3>Sensor PIR</h3>
-
               <p>
                 O sensor PIR detecta movimentos no ambiente através da radiação infravermelha. Quando há movimento, o sistema ativa um LED e envia um alerta no monitor serial.
               </p>
             </div>
-
             <div class="card-home">
               <h3>Detector de Fumaça</h3>
-
               <p>
                 O detector de fumaça identifica gases e fumaça no ambiente utilizando o sensor MQ-2. Ao detectar risco, o sistema ativa um LED vermelho e um buzzer de alerta.
               </p>
             </div>
-
             <div class="card-home">
               <h3>Alexcio AI</h3>
-
               <p>
                 O Alexcio AI ajuda os usuários com dúvidas sobre tecnologia e programação através de um chat inteligente integrado ao sistema.
               </p>
             </div>
-
           </div>
-
         </div>
-
       </section>
 
       <!-- SEÇÃO 1 -->
+
       <section class="secao" id="secao1">
-
         <h2>SENSOR DE MOVIMENTO</h2>
-
         <img
-          src="PIR.png"
+          src="IMAGENS/PIR.png"
           alt="Sensor de Movimento"
           class="imagem-sensor"
         >
-
         <p class="descricao">
           Esse é o nosso sensor de movimento e ele é relativamente fácil de montar e entender.
           Como o nome já diz, ele capta o movimento da pessoa ou objeto e o LED aciona na protoboard,
           e na ARDUINO IDE é mostrado no monitor serial "MOVIMENTO DETECTADO" ou "SEM MOVIMENTO".
           Bom, é mais fácil na prática! O código está aí, agora é só testar!
         </p>
-
 <pre class="codigo"><code>
 #define SENSOR_PIR 2
 #define LED 3
-
 void setup() {
-
   pinMode(SENSOR_PIR, INPUT);
   pinMode(LED, OUTPUT);
-
   Serial.begin(9600);
 }
-
 void loop() {
-
   bool estado_sensor =
     digitalRead(SENSOR_PIR);
-
   if (estado_sensor == HIGH) {
-
     digitalWrite(LED, HIGH);
-
     Serial.println(
       "MOVIMENTO DETECTADO ✓"
     );
-
   } else {
-
     digitalWrite(LED, LOW);
-
     Serial.println(
       "SEM MOVIMENTO ☓"
     );
-
   }
-
   delay(200);
 }
 </code></pre>
-
       </section>
 
       <!-- SEÇÃO 2 -->
+       
       <section class="secao" id="secao2">
-
         <h2>DETECTOR DE FUMAÇA</h2>
-
         <img
-          src="MQ2.png"
+          src="IMAGENS/MQ2.png"
           alt="Detector de Fumaça"
           class="imagem-sensor"
         >
-
         <p class="descricao">
           Este é o nosso detector de fumaça. Em comparação com o detector de movimento,
           ele é um pouco mais complexo de montar, mas nada impossível!
@@ -229,9 +182,7 @@ void loop() {
 <pre class="codigo"><code>
 #define MQ_analogico A0
 #define MQ_digital 4
-
 #define Buzzer 5
-
 #define Led_Verde 6
 #define Led_Vermelho 7
 
@@ -239,40 +190,31 @@ int valor_analogico;
 int valor_digital;
 
 // Limite do sensor
+
 int limite_gas = 100;
-
 void setup() {
-
   Serial.begin(9600);
-
   pinMode(MQ_analogico, INPUT);
   pinMode(MQ_digital, INPUT);
-
   pinMode(Buzzer, OUTPUT);
-
   pinMode(Led_Verde, OUTPUT);
   pinMode(Led_Vermelho, OUTPUT);
-
   digitalWrite(Led_Verde, HIGH);
   digitalWrite(Led_Vermelho, LOW);
-
   noTone(Buzzer);
 }
 
 void loop() {
-
   valor_analogico =
     analogRead(MQ_analogico);
-
   valor_digital =
     digitalRead(MQ_digital);
 
   // Mostra o nível no monitor serial
+
   Serial.print("Nivel de Gas/Fumaca: ");
   Serial.println(valor_analogico);
-
   if (valor_analogico > limite_gas) {
-
     digitalWrite(
       Led_Vermelho,
       HIGH
@@ -284,35 +226,25 @@ void loop() {
     );
 
     tone(Buzzer, 1000);
-
     Serial.print(
       "⚠️ AMBIENTE EM RISCO! | Nivel: "
     );
-
     Serial.println(valor_analogico);
-
   } else {
-
     digitalWrite(
       Led_Vermelho,
       LOW
     );
-
     digitalWrite(
       Led_Verde,
       HIGH
     );
-
     noTone(Buzzer);
-
     Serial.print(
       "✅ Ambiente Seguro | Nivel: "
     );
-
     Serial.println(valor_analogico);
-
   }
-
   delay(200);
 }
 </code></pre>
@@ -320,15 +252,13 @@ void loop() {
       </section>
 
       <!-- SEÇÃO 3 -->
+
       <section class="secao" id="secao3">
-
         <h2>Alexcio AI</h2>
-
         <!-- CHAT -->
         <div id="ia-area" class="descricao ia-area">
-
           <img
-           src="fundo-da-IA.png"
+           src="IMAGENS/fundo-da-IA.png"
           class="imagem-chat"
           >
 
@@ -336,12 +266,10 @@ void loop() {
             <b>Alexcio:</b>
             Olá! Faça perguntas sobre tecnologia.
           </p>
-
         </div>
 
         <!-- INPUT -->
         <div class="chat-input">
-
           <input
             id="pergunta"
             type="text"
@@ -356,109 +284,88 @@ void loop() {
           <button onclick="enviarPerguntaIA()">
             ➤
           </button>
-
         </div>
-
       </section>
 
       <!-- SEÇÃO 4 -->
+
 <section class="secao" id="secao4">
-
   <h2>DEUSES</h2>
-
   <img
-    src="gilberto.png"
+    src="IMAGENS/gilberto.png"
     alt="Professor Gilberto"
     class="imagem-sensor"
   >
-
   <p class="descricao">
     Uns dos melhores professores do curso Técnico
   </p>
-
   <img
-    src="galã.png"
+    src="IMAGENS/galã.png"
     alt="Professor Alexandre"
     class="imagem-sensor"
   >
-
   <p class="descricao">
     Galã, Profissional em Programação
   </p>
-
   <img
-    src="ISMAELA.png"
+    src="IMAGENS/ISMAELA.png"
     alt="Professor Ismael"
     class="imagem-sensor"
   >
-
   <p class="descricao">
     Bixo fei da poha
   </p>
-
   <img
-    src="ISMAEL-BONITO.png"
+    src="IMAGENS/ISMAEL-BONITO.png"
     alt="Professor Ismael"
     class="imagem-sensor"
   >
-
   <p class="descricao">
     Aqui ele tá mais bunitin
   </p>
-
 </section>
 
       <!-- SEÇÃO 5 -->
+
       <section class="secao" id="secao5">
-
         <h2>MINECRAFT</h2>
-
         <img
-          src="family.png"
+          src="IMAGENS/family.png"
           alt="Detector de Fumaça"
           class="imagem-sensor"
         >
-
         <p class="descricao">
           Essas são amostras do que fazemos no nosso tempo livre (SOMOS HUMANOS TBM)
         </p>
-
-
         <img
-          src="Espada-portal.png"
+          src="IMAGENS/Espada-portal.png"
           alt="Detector de Fumaça"
           class="imagem-sensor"
         >
         <p class="descricao">
           Não parece mas é um portal do nether
         </p>
-
-
         <img
-          src="Castelo.png"
+          src="IMAGENS/Castelo.png"
           alt="Detector de Fumaça"
           class="imagem-sensor"
         >
         <p class="descricao">
           O castelo mais foda que existe feito completamente do zero
         </p>
-
-
         <img
-          src="dono.png"
+          src="IMAGENS/dono.png"
           alt="Detector de Fumaça"
           class="imagem-sensor"
         >
         <p class="descricao">
           Esse aqui é o cara que começou essa merda
         </p>
-
         <img
-          src="familia.png"
+          src="IMAGENS/familia.png"
           alt="Detector de Fumaça"
           class="imaSgem-sensor"
         >
-        
         <p class="descricao">
           FILME CINEMA
         </p>
