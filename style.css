@@ -201,7 +201,7 @@
 
   .codigo{
     background:#333;
-    color:#0f0;
+    color:rgb(252, 252, 252);
     padding:20px;
     border-radius:14px;
     overflow-x:auto;
