@@ -1011,3 +1011,41 @@
     left:250px;
     width:calc(100% - 250px);
 }
+
+.monitor-pir{
+
+background:#454648;
+padding:25px;
+border-radius:15px;
+margin:30px 0;
+
+}
+
+
+.pir-status{
+
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+}
+
+
+.status-box{
+
+background:#b1b3b7c6;
+padding:20px;
+border-radius:12px;
+text-align:center;
+
+}
+
+
+.status-box span{
+
+font-size:22px;
+font-weight:bold;
+
+}

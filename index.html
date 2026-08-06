@@ -125,6 +125,44 @@
           e na ARDUINO IDE é mostrado no monitor serial "MOVIMENTO DETECTADO" ou "SEM MOVIMENTO".
           Bom, é mais fácil na prática! O código está aí, agora é só testar!
         </p>
+
+        <!-- MONITORAMENTO PIR -->
+
+<div class="monitor-pir">
+
+    <h3>
+         MONITORAMENTO EM TEMPO REAL
+    </h3>
+
+    <div class="pir-status">
+
+        <div class="status-box">
+            <h4>STATUS DO SENSOR</h4>
+            <span id="pirOnline">
+                 Online
+            </span>
+        </div>
+
+
+        <div class="status-box">
+            <h4>MOVIMENTO</h4>
+            <span id="pirMovimento">
+               Ambiente normal
+            </span>
+        </div>
+
+
+        <div class="status-box">
+            <h4>ÚLTIMO EVENTO</h4>
+            <span id="pirHora">
+                Nenhum movimento
+            </span>
+        </div>
+
+    </div>
+
+</div>
+
 <pre class="codigo"><code>
 #define SENSOR_PIR 2
 #define LED 3
@@ -149,6 +187,48 @@ void loop() {
   }
   delay(200);
 }
+
+
+
+CÓDIGO EM PYTHON
+
+
+
+from machine import Pin
+import time
+
+sensor_pir = Pin(14, Pin.IN)
+
+print("============================")
+print(" SISTEMA SENSOR PIR")
+print(" NodeMCU ESP8266")
+print("============================")
+
+print("Inicializando sensor...")
+time.sleep(10)
+
+print("Sensor pronto!")
+print("Monitorando movimento...\n")
+
+ultimo_estado = 0
+
+while True:
+
+    estado_sensor = sensor_pir.value()
+
+    if estado_sensor == 1 and ultimo_estado == 0:
+
+        print("🚨 MOVIMENTO DETECTADO ✓")
+        print("Presença identificada!\n")
+
+    elif estado_sensor == 0 and ultimo_estado == 1:
+
+        print("✅ SEM MOVIMENTO ✕")
+        print("Ambiente normal!\n")
+
+    ultimo_estado = estado_sensor
+    time.sleep(0.2) 
+
 </code></pre>
       </section>
 
