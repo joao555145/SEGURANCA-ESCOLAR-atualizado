@@ -138,3 +138,28 @@ setTimeout(() => {
     "block";
 
 }, 3000);
+
+
+setInterval(() => {
+
+fetch("http://192.168.0.112/valor")
+
+.then(res => res.text())
+
+.then(dados => {
+
+let partes = dados.split("|");
+
+
+document.getElementById("mq2Valor").innerHTML = partes[0];
+
+document.getElementById("mq2Status").innerHTML = partes[1];
+
+document.getElementById("mq2Hora").innerHTML =
+new Date().toLocaleTimeString();
+
+
+});
+
+
+},1000);
