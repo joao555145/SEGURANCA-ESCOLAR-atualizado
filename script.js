@@ -142,7 +142,7 @@ setTimeout(() => {
 
 setInterval(() => {
 
-fetch("http://192.168.0.112/valor")
+fetch("http://192.168.0.111/valor")
 
 .then(res => res.text())
 
